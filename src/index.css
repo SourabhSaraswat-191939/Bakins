@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Georgia", "Playfair Display", serif;
+  --font-body: system-ui, "Segoe UI", Roboto, sans-serif;
+  --color-cream: #fdf8f0;
+  --color-cream-dark: #f5ead9;
+  --color-crust: #8a5a34;
+  --color-crust-dark: #5c3a1e;
+  --color-cherry: #b3413c;
+  --color-cherry-dark: #8f2f2b;
+  /* Brand palette sampled from THE BAKINS logo (sage wreath, cream cake, gold sparkle) */
+  --color-sage: #6f8c56;
+  --color-sage-dark: #52683f;
+  --color-sage-light: #eef2e7;
+  --color-gold: #d9a441;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  background-image:
+    radial-gradient(circle, rgba(138, 90, 52, 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: #2b241d;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Scroll-reveal (see src/components/Reveal.jsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.reveal.reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-hero-in {
+  opacity: 0;
+  animation: hero-in 0.8s ease-out forwards;
+}
+
+@keyframes float-blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(20px, -24px) scale(1.08);
+  }
+}
+.animate-float-slow {
+  animation: float-blob 10s ease-in-out infinite;
+}
+.animate-float-slower {
+  animation: float-blob 14s ease-in-out infinite reverse;
+}
+
+@keyframes fade-in-fast {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.animate-fade-in-fast {
+  animation: fade-in-fast 0.2s ease-out both;
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.animate-modal-in {
+  animation: modal-in 0.25s ease-out both;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-cream-dark) 0%,
+    #fff 50%,
+    var(--color-cream-dark) 100%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .animate-hero-in,
+  .animate-float-slow,
+  .animate-float-slower,
+  .animate-modal-in,
+  .animate-fade-in-fast,
+  .animate-shimmer {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
