@@ -13,8 +13,6 @@ dist-ssr
 *.local
 
 # Environment variables (Firebase config secrets)
-.env
-.env.*
 !.env.example
 
 # Editor directories and files
