@@ -1,16 +1,12 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { addDoc, collection, deleteDoc, doc, serverTimestamp, updateDoc } from 'firebase/firestore'
-import { signOut } from 'firebase/auth'
-import { auth, db } from '../firebase'
-import { useAuth } from '../context/AuthContext'
+import { db } from '../firebase'
 import { useProducts, groupByCategory, nextOrderInCategory } from '../hooks/useProducts'
 import ProductForm from './ProductForm'
 import SortableCategoryList from './SortableCategoryList'
-import { siteConfig } from '../siteConfig'
+import AdminHeader from './AdminHeader'
 
 export default function AdminDashboard() {
-  const { user } = useAuth()
   const { products, loading } = useProducts()
   const [editing, setEditing] = useState(null) // null = closed, {} = new, product = edit
   const [deletingId, setDeletingId] = useState(null)
@@ -40,25 +36,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-cream">
-      <header className="bg-sage-dark text-cream">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 py-4 flex items-center justify-between">
-          <div>
-            <h1 className="font-display text-xl">{siteConfig.shopName} — Dashboard</h1>
-            <p className="text-xs text-cream-dark/70">{user?.email}</p>
-          </div>
-          <div className="flex items-center gap-4 text-sm">
-            <Link to="/" className="hover:underline">
-              View Site
-            </Link>
-            <button
-              onClick={() => signOut(auth)}
-              className="border border-cream-dark/40 hover:border-cream px-3 py-1.5 rounded-full"
-            >
-              Sign Out
-            </button>
-          </div>
-        </div>
-      </header>
+      <AdminHeader />
 
       <main className="mx-auto max-w-5xl px-4 sm:px-6 py-8">
         <div className="flex items-center justify-between mb-2">

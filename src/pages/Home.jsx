@@ -11,9 +11,12 @@ function MenuSkeleton() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {Array.from({ length: 6 }).map((_, i) => (
-        <div key={i} className="bg-white rounded-2xl shadow-sm overflow-hidden">
-          <div className="aspect-4/3 animate-shimmer" />
-          <div className="p-4 space-y-3">
+        <div
+          key={i}
+          className="bg-white rounded-2xl shadow-sm overflow-hidden flex flex-row sm:flex-col"
+        >
+          <div className="w-24 sm:w-auto aspect-square sm:aspect-4/3 shrink-0 animate-shimmer" />
+          <div className="p-3 sm:p-4 space-y-2 sm:space-y-3 flex-1">
             <div className="h-4 w-2/3 rounded animate-shimmer" />
             <div className="h-3 w-full rounded animate-shimmer" />
             <div className="h-3 w-1/3 rounded animate-shimmer" />

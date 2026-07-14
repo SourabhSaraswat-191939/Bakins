@@ -4,6 +4,8 @@ import ProtectedRoute from './components/ProtectedRoute'
 import Home from './pages/Home'
 import AdminLogin from './admin/AdminLogin'
 import AdminDashboard from './admin/AdminDashboard'
+import InventoryPage from './admin/InventoryPage'
+import OrdersPage from './admin/OrdersPage'
 
 function App() {
   return (
@@ -17,6 +19,22 @@ function App() {
             element={
               <ProtectedRoute>
                 <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/inventory"
+            element={
+              <ProtectedRoute>
+                <InventoryPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/orders"
+            element={
+              <ProtectedRoute>
+                <OrdersPage />
               </ProtectedRoute>
             }
           />
